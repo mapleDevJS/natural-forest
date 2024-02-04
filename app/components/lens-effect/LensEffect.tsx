@@ -1,31 +1,26 @@
-'use client'
-import {FC, ReactNode, useCallback, useEffect} from 'react';
+'use client';
+import React, {FC, ReactNode, useCallback, useEffect, useRef} from 'react';
 
 interface Props {
     children: ReactNode;
 }
 
-const ThreeDLens: FC<Props> = ({children}) => {
-    let moveX: number | undefined;
-    let moveY: number | undefined;
-
+const LensEffect: FC<Props> = ({children}) => {
+    const moveX = useRef<number | undefined>();
+    const moveY = useRef<number | undefined>();
     const eventListener = useCallback((ev: MouseEvent) => {
-        moveX = (ev.clientX - window.innerWidth / 2) * -0.005;
-        moveY = (ev.clientY - window.innerHeight / 2) * 0.01;
-
-        document.documentElement.style.setProperty('--move-x', `${moveX}deg`);
-        document.documentElement.style.setProperty('--move-y', `${moveY}deg`);
+        moveX.current = (ev.clientX - window.innerWidth / 2) * -0.005;
+        moveY.current = (ev.clientY - window.innerHeight / 2) * 0.01;
+        document.documentElement.style.setProperty('--move-x', `${moveX.current}deg`);
+        document.documentElement.style.setProperty('--move-y', `${moveY.current}deg`);
     }, []);
 
     const throttledEventListener = useCallback(
         (func: (ev: MouseEvent) => void, limit: number) => {
-            let inThrottle: boolean = false;
-
+            let inThrottle = false;
             return function (this: Document, ev: MouseEvent) {
-                const context = this;
-
                 if (!inThrottle) {
-                    func.call(context, ev);
+                    func.call(this, ev);
                     inThrottle = true;
                     setTimeout(() => (inThrottle = false), limit);
                 }
@@ -36,9 +31,7 @@ const ThreeDLens: FC<Props> = ({children}) => {
 
     useEffect(() => {
         const handleMouseMove = throttledEventListener(eventListener, 10);
-
         document.addEventListener('mousemove', handleMouseMove);
-
         return () => {
             document.removeEventListener('mousemove', handleMouseMove);
         };
@@ -47,4 +40,4 @@ const ThreeDLens: FC<Props> = ({children}) => {
     return <>{children}</>;
 };
 
-export default ThreeDLens;
+export default LensEffect;

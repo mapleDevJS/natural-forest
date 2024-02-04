@@ -7,13 +7,17 @@ class RainDrops {
     endy: number;
     velocity: number;
     opacity: number;
+    size: number;
+    weight: number;
 
-    constructor(x: number, y: number, endy: number, velocity: number, opacity: number) {
+    constructor(x: number, y: number, endy: number, velocity: number, opacity: number, size: number) {
         this.x = x;
         this.y = y;
         this.endy = endy;
-        this.velocity = velocity;
+        this.velocity = velocity * size; // Modify the velocity based on size
         this.opacity = opacity;
+        this.size = size; // Add a new size property
+        this.weight = size * 0.05; // Add a new weight property
     }
 
     draw(context: CanvasRenderingContext2D) {
@@ -67,7 +71,8 @@ const Rain: FC = () => {
             const randomRainHeight = Math.floor(Math.random() * 10) + 2;
             const randomSpeed = Math.random() * 20 + 0.2;
             const randomOpacity = Math.random() * 0.55;
-            rainArray.push(new RainDrops(rainXLocation, rainYLocation, randomRainHeight, randomSpeed, randomOpacity));
+            const randomSize = Math.random() * 2 + 1; // Assign a random size to each raindrop between 1 and 3
+            rainArray.push(new RainDrops(rainXLocation, rainYLocation, randomRainHeight, randomSpeed, randomOpacity, randomSize));
         }
 
         rainArrayRef.current = rainArray;

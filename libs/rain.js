@@ -1,62 +1,84 @@
-let canvas = document.getElementsByClassName('rain')[0];
+// Our class to represent a raindrop
+class Raindrop {
+	constructor(startingX, startingY, endingY, fallSpeed, transparency, movementDirection, size) {
+		this.xPosition = startingX;
+		this.yPosition = startingY;
+		this.yEndPosition = endingY;
+		this.fallSpeed = fallSpeed;
+		this.fallAcceleration = 0.1;
+		this.transparency = transparency;
+		this.movementDirection = movementDirection;
+		this.size = size;
+		this.color = `rgba(255, 255, 255, ${this.transparency})`;
+		this.endOfRain = window.innerHeight + 100;
+	}
+
+	// Method to draw the raindrop
+	draw(context) {
+		context.beginPath();
+		context.arc(this.xPosition, this.yPosition, this.size/2, 0, Math.PI * 2, true);
+		context.fillStyle = this.color;
+		context.fill();
+	}
+
+	// Method to update the position of the raindrop
+	update(context) {
+		this.fallSpeed += this.fallAcceleration;
+		this.yPosition = this.yPosition >= this.endOfRain ? this.yEndPosition - 100 : this.yPosition + this.fallSpeed;
+		this.draw(context);
+	}
+}
+
+// Helper function to generate a random number between min and max
+function generateRandomNumber(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Function to create an array of random raindrops
+function createRaindrops() {
+	const raindrops = [];
+	for (let i = 0; i < 70; i++) {
+		let xPosition = generateRandomNumber(1, window.innerWidth);
+		let yPosition = Math.random() * -500;
+		let yEndPosition = generateRandomNumber(2, 10);
+		let fallSpeed = generateRandomNumber(30, 40) * (yEndPosition / 10);
+		let transparency = Math.random() * .55;
+		let movementDirection = Math.random() > 0.5 ? 1 : -1;
+		let size = Math.random() * .1 + .05;
+		raindrops.push(new Raindrop(xPosition, yPosition, yEndPosition, fallSpeed, transparency, movementDirection, size));
+	}
+	return raindrops;
+}
+
+// Setting up the canvas
+const canvas = document.getElementsByClassName('rain')[0];
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+const context = canvas.getContext('2d');
 
-let c = canvas.getContext('2d');
+// Creating our raindrops
+const raindrops = createRaindrops();
 
-function randomNum(max, min) {
-	return Math.floor(Math.random() * max) + min;
-}
+// Animation
+let previousFrameTimestamp = 0;
+const maxFramesPerSecond = 60;
 
-function RainDrops(x, y, endy, velocity, opacity) {
+function animateRaindrops(currentFrameTimestamp) {
+	if (currentFrameTimestamp < previousFrameTimestamp + (1000 / maxFramesPerSecond)) {
+		requestAnimationFrame(animateRaindrops);
+		return;
+	}
+	previousFrameTimestamp = currentFrameTimestamp;
 
-	this.x = x;
-	this.y = y;
-	this.endy = endy;
-	this.velocity = velocity;
-	this.opacity = opacity;
-
-	this.draw = function() {
-		c.beginPath();
-		c.moveTo(this.x, this.y);
-		c.lineTo(this.x, this.y - this.endy);
-		c.lineWidth = 1;
-		c.strokeStyle= "rgba(255, 255, 255, " + this.opacity + ")";
-		c.stroke();
+	//update each raindrop's position and redraw it on the canvas
+	context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+	for (const raindrop of raindrops) {
+		raindrop.update(context);
 	}
 
-	this.update = function() {
-		let rainEnd = window.innerHeight + 100;
-		if (this.y >= rainEnd) {
-			this.y = this.endy - 100;
-		} else {
-			this.y = this.y + this.velocity;
-		}
-		this.draw();
-	}
-
+	// Request the next frame
+	requestAnimationFrame(animateRaindrops);
 }
 
-let rainArray = [];
-
-for (let i = 0; i < 140; i++) {
-	let rainXLocation = Math.floor(Math.random() * window.innerWidth) + 1;
-	let rainYLocation = Math.random() * -500;
-	let randomRainHeight = randomNum(10, 2);
-	let randomSpeed = randomNum(20, .2);
-	let randomOpacity = Math.random() * .55;
-	rainArray.push(new RainDrops(rainXLocation, rainYLocation, randomRainHeight, randomSpeed, randomOpacity));
-}
-
-function animateRain() {
-
-	requestAnimationFrame(animateRain);
-	c.clearRect(0,0, window.innerWidth, window.innerHeight);
-
-	for (let i = 0; i < rainArray.length; i++) {
-		rainArray[i].update();
-	}
-
-}
-
-animateRain();
+// Start the animation
+requestAnimationFrame(animateRaindrops);

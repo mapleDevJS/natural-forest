@@ -11,10 +11,10 @@ export default function Home() {
             <section className={styles.layers}>
                 <div className={styles.layersContainer}>
                     <div className={`${styles.layersItem} ${styles.layer1}`}
-                         style={{backgroundImage: `url(/img/layer-1.jpg)`}}>
+                         style={{backgroundImage: `url(/img/layer-1.webp)`}}>
                     </div>
                     <div className={`${styles.layersItem} ${styles.layer2}`}
-                         style={{backgroundImage: `url(/img/layer-2.png)`}}>
+                         style={{backgroundImage: `url(/img/layer-2.webp)`}}>
                     </div>
                     <div className={`${styles.layersItem} ${styles.layer3}`}>
                         <div className={styles.heroContent}>
@@ -28,10 +28,10 @@ export default function Home() {
                         <RainComponent/>
                     </div>
                     <div className={`${styles.layersItem} ${styles.layer5}`}
-                         style={{backgroundImage: `url(/img/layer-5.png)`}}>
+                         style={{backgroundImage: `url(/img/layer-5.webp)`}}>
                     </div>
                     <div className={`${styles.layersItem} ${styles.layer6}`}
-                         style={{backgroundImage: `url(/img/layer-6.png)`}}>
+                         style={{backgroundImage: `url(/img/layer-6.webp)`}}>
                     </div>
                 </div>
             </section>

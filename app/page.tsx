@@ -1,12 +1,12 @@
 import dynamic from 'next/dynamic'
 import styles from './page.module.css'
-import ThreeDLens from './components/3d-lens/ThreeDLens';
+import LensEffect from '@/app/components/lens-effect/LensEffect';
 
 const RainComponent = dynamic(() => import('./components/rain/Rain'), {ssr: false});
 
 export default function Home() {
     return (
-        <ThreeDLens>
+        <LensEffect>
             <div className={styles.logo} style={{backgroundImage: `url(/img/logo.svg)`}}></div>
             <section className={styles.layers}>
                 <div className={styles.layersContainer}>
@@ -35,6 +35,6 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-        </ThreeDLens>
+        </LensEffect>
     )
 }

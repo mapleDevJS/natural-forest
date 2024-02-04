@@ -17,12 +17,20 @@ class RainDrops {
     }
 
     draw(context: CanvasRenderingContext2D) {
+        // Draw the path of raindrop
         context.beginPath();
         context.moveTo(this.x, this.y);
-        context.lineTo(this.x, this.y - this.endy);
+        context.lineTo(this.x, this.y + this.endy);
         context.lineWidth = 1;
         context.strokeStyle = `rgba(255, 255, 255, ${this.opacity})`;
         context.stroke();
+
+        // Draw the raindrop itself as an ellipse
+        context.beginPath();
+        let raindropRadius = 2; // define an appropriate radius for the ellipse
+        context.ellipse(this.x, this.y, raindropRadius, raindropRadius*2, 0, 0, 2 * Math.PI);
+        context.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        context.fill();
     }
 
     update(context: CanvasRenderingContext2D) {

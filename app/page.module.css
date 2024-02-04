@@ -1,104 +1,104 @@
 .logo {
-  --logo-size: calc(var(--index) * 7.8);
-  width: var(--logo-size);
-  height: var(--logo-size);
-  background-repeat: no-repeat;
-  position: absolute;
-  left: calc(51% - calc(var(--logo-size) / 2));
-  top: calc(var(--index) * 2.8);
-  z-index: 1;
+    position: absolute;
+    top: calc(var(--index) * 2.8);
+    left: calc(51% - calc(var(--logo-size) / 2));
+    z-index: 1;
+    width: var(--logo-size);
+    height: var(--logo-size);
+    background-repeat: no-repeat;
+    --logo-size: calc(var(--index) * 7.8);
 }
 
 .layers {
-  perspective: 1000px;
-  overflow: hidden;
+    overflow: hidden;
+    perspective: 1000px;
 }
 
 .layersContainer {
-  height: 100vh;
-  min-height: 500px;
-  transform-style: preserve-3d;
-  transform: rotateX(var(--move-y)) rotateY(var(--move-x));
-  will-change: transform;
-  transition: transform var(--transition);
+    height: 100vh;
+    min-height: 500px;
+    transform: rotateX(var(--move-y)) rotateY(var(--move-x));
+    transform-style: preserve-3d;
+    transition: transform var(--transition);
+    will-change: transform;
 }
 
 .layersItem {
-  position: absolute;
-  inset: -5vw;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    inset: -5vw;
 }
 
 .layer1 {
-  transform: var(--transform-layer-1);
+    transform: var(--transform-layer-1);
 }
 
 .layer2 {
-  transform: var(--transform-layer-2);
+    transform: var(--transform-layer-2);
 }
 
 .layer3 {
-  transform: var(--transform-layer-3);
+    transform: var(--transform-layer-3);
 }
 
 .layer4 {
-  transform: var(--transform-layer-4);
+    transform: var(--transform-layer-4);
 }
 
 .layer5 {
-  transform: var(--transform-layer-5);
+    transform: var(--transform-layer-5);
 }
 
 .layer6 {
-  transform: var(--transform-layer-6);
+    transform: var(--transform-layer-6);
 }
 
 .heroContent {
-  font-size: calc(var(--index) * 2.9);
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: calc(var(--index) * -.15);
-  line-height: 1.35em;
-  margin-top: calc(var(--index) * 5.5);
+    margin-top: calc(var(--index) * 5.5);
+    font-size: calc(var(--index) * 2.9);
+    line-height: 1.35em;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: calc(var(--index) * -.15);
 }
 
 .heroContent span {
-  display: block;
+    display: block;
 }
 
 .heroContentText {
-  text-transform: none;
-  /* font-family: merriweather-italic-3d; */
-  letter-spacing: normal;
-  font-size: calc(var(--index) * .73);
-  line-height: 3;
+    font-size: calc(var(--index) * .73);
+    line-height: 3;
+    font-family: var(--font-merriweather);
+    text-transform: none;
+    letter-spacing: normal;
 }
 
 .buttonStart {
-  /* font-family: Arial; */
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: calc(var(--index) * .71);
-  letter-spacing: -.02vw;
-  padding: calc(var(--index) * .7) calc(var(--index) * 1.25);
-  background-color: transparent;
-  color: #fff;
-  border-radius: 10em;
-  border: rgb(255 255 255 / .4) 3px solid;
-  outline: none;
-  cursor: pointer;
-  margin-top: calc(var(--index) * 2.5);
+    margin-top: calc(var(--index) * 2.5);
+    padding: calc(var(--index) * .7) calc(var(--index) * 1.25);
+    font-weight: 600;
+    font-size: calc(var(--index) * .71);
+    font-family: Arial;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -.02vw;
+    background-color: transparent;
+    border: rgb(255 255 255 / .4) 3px solid;
+    border-radius: 10em;
+    outline: none;
+    cursor: pointer;
 }
 
 .buttonStart:hover {
-  background-image: radial-gradient(rgba(0, 128, 0, 0.8) 30%, transparent 31%, transparent 50%);
-  background-size: 3px 3px;
+    background-image: radial-gradient(rgba(0, 128, 0, 0.8) 30%, transparent 31%, transparent 50%);
+    background-size: 3px 3px;
 }
 
 .layer4, .layer5, .layer6 {
-  pointer-events: none;
+    pointer-events: none;
 }

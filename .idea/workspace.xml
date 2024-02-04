@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3df1e907-3be2-4882-bfad-aa3cfb9dd6a3" name="Changes" comment="Delete unnecessary files&#10;&#10;Removed app.js, index.html, and logo.svg from the HTML directory as these files are no longer required. This simplifies the project structure and improves ease of maintenance and readability.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +92,7 @@
       <updated>1707054605527</updated>
       <workItem from="1707054606934" duration="28000" />
       <workItem from="1707054640763" duration="1595000" />
-      <workItem from="1707068467744" duration="474000" />
+      <workItem from="1707068467744" duration="1202000" />
     </task>
     <task id="LOCAL-00001" summary="wip">
       <option name="closed" value="true" />
@@ -107,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707068615955</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Delete unnecessary files&#10;&#10;Removed app.js, index.html, and logo.svg from the HTML directory as these files are no longer required. This simplifies the project structure and improves ease of maintenance and readability.">
+      <option name="closed" value="true" />
+      <created>1707069018958</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707069018958</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
